@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Nav from './components/Nav'
 import Search from './components/Search'
+import AnimePage from './components/AnimePage'
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/anime" element={<AnimePage />} />
       </Routes>
     </Router>
     </>
