@@ -71,3 +71,7 @@ button:focus-visible {
   }
 }
 
+.card-size {
+  width: 17rem;
+  max-width: 33rem;
+}

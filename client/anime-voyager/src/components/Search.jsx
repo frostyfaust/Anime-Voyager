@@ -1,4 +1,6 @@
 import { useState } from "react"
+import AnimeCards from "./AnimeCards";
+import { getAnimes } from "../HttpRequests/ApiRequests"
 
 export default function Search() {
     const [search, setSearch] = useState("")
@@ -11,10 +13,9 @@ export default function Search() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(search.length > 0) {
-            const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}`)
-            const data = await res.json()
-            console.log(data)
-            setAnimes(data.results)
+            const data = await getAnimes(search)
+            console.log(data.data)
+            setAnimes(data.data)
         }
     };
 
@@ -42,6 +43,13 @@ export default function Search() {
           Search
         </button>
       </form>
+      <div className="text-center">
+        {animes.length > 0 ? (
+          <AnimeCards animes={animes} />
+        ) : (
+          <p className="text-center text-2xl">No animes found</p>
+        )}
+      </div>
     </div>
   )
 }
