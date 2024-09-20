@@ -36,7 +36,7 @@ export default function Nav() {
               <NavLink to="/search">Search</NavLink>
             </li>
             <li>
-              <NavLink to="/">Your Animes</NavLink>
+              <NavLink to="/animeList">Your Animes</NavLink>
             </li>
           </ul>
         </div>
@@ -45,12 +45,8 @@ export default function Nav() {
         <a className="btn btn-ghost text-xl">Anime Voyager</a>
       </div>
       <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered w-24 md:w-auto"
-          />
+        <div className="">
+          <NavLink className="btn btn-outline btn-info" to="/login">Login</NavLink>
         </div>
         <div className="dropdown dropdown-end">
           <div

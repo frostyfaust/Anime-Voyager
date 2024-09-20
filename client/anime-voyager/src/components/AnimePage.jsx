@@ -3,7 +3,7 @@ import calendar from "../assets/calendar.png";
 import time from "../assets/time.png";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAnime } from "../HttpRequests/ApiRequests";
+import { getAnime } from "../requests/ApiRequests";
 
 export default function AnimePage() {
   const { id } = useParams();

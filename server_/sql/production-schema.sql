@@ -18,9 +18,9 @@ create table authorities (
 create table favorites (
     favorite_id int auto_increment primary key,
     username varchar(50) not null,
-    character_id int not null,
+    anime_id int not null,
     constraint fk_favorites_users foreign key(username) references users(username),
-    constraint uq_favorites unique(username, character_id)
+    constraint uq_favorites unique(username, anime_id)
 );
 
 create table watch_list (

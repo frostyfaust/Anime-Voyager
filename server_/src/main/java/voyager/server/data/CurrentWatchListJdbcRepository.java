@@ -6,17 +6,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class FavoritesJdbcRepository {
+public class CurrentWatchListJdbcRepository {
 
     private final JdbcClient jdbcClient;
 
-    public FavoritesJdbcRepository(JdbcClient jdbcClient) {
+    public CurrentWatchListJdbcRepository(JdbcClient jdbcClient) {
         this.jdbcClient = jdbcClient;
     }
 
-    public List<Integer> getFavorites(String username) {
+    public List<Integer> getCurrentList(String username) {
 
-        final String sql = "SELECT anime_id FROM favorites WHERE username "
+        final String sql = "SELECT anime_id FROM current_watch_list WHERE username "
                 + "= ?";
 
         return jdbcClient.sql(sql)
@@ -25,8 +25,8 @@ public class FavoritesJdbcRepository {
                 .list();
     }
 
-    public boolean addFavorite(String username, int animeId) {
-        final String sql = "INSERT INTO favorites (username, anime_id) "
+    public boolean currentListAdd(String username, int animeId) {
+        final String sql = "INSERT INTO current_watch_list (username, anime_id) "
                 + "VALUES (?, ?)";
 
         return jdbcClient.sql(sql)
@@ -35,8 +35,8 @@ public class FavoritesJdbcRepository {
                 .update() > 0;
     }
 
-    public boolean deleteFavorite(String username, int animeId) {
-        final String sql = "DELETE FROM favorites WHERE username = ? AND "
+    public boolean currentListDelete(String username, int animeId) {
+        final String sql = "DELETE FROM current_watch_list WHERE username = ? AND "
                 + "anime_id = ?";
 
         return jdbcClient.sql(sql)
@@ -44,6 +44,4 @@ public class FavoritesJdbcRepository {
                         animeId)
                 .update() > 0;
     }
-
 }
-

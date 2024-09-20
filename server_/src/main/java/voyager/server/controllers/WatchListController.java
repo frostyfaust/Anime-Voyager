@@ -5,65 +5,69 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import voyager.server.data.FavoritesJdbcRepository;
+import voyager.server.data.WatchListJdbcRepository;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/animeList/favorites")
-public class FavoritesController {
+@RequestMapping("/animeList/watchList")
+public class WatchListController {
 
-    private final FavoritesJdbcRepository favoritesJdbcRepository;
+    private final WatchListJdbcRepository watchListJdbcRepository;
 
-    public FavoritesController(
-            FavoritesJdbcRepository favoritesJdbcRepository) {
+    public WatchListController(
+            WatchListJdbcRepository watchListJdbcRepository) {
 
-        this.favoritesJdbcRepository = favoritesJdbcRepository;
+        this.watchListJdbcRepository = watchListJdbcRepository;
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> getFavorites(@PathVariable String username) {
+    public ResponseEntity<?> getWatchList(@PathVariable String username) {
         if (!usernameMatchesAuth(username)) {
             return ResponseEntity.status(403).build();
         }
         return ResponseEntity.ok(
-                favoritesJdbcRepository.getFavorites(username));
+                watchListJdbcRepository.getWatchList(username));
     }
 
-    @PostMapping("/{username}/{characterId}")
-    public ResponseEntity<?> addFavorite(@PathVariable String username,
-                                         @PathVariable int characterId) {
+    @PostMapping("/{username}/{animeId}")
+    public ResponseEntity<?> addWatchAnime(@PathVariable String username,
+                                            @PathVariable int animeId) {
         if (!usernameMatchesAuth(username)) {
             return ResponseEntity.status(403).build();
         }
         try {
-            if (favoritesJdbcRepository.addFavorite(username, characterId)) {
+            if (watchListJdbcRepository.watchListAdd(username, animeId)) {
                 return ResponseEntity.noContent().build();
             } else {
                 return ResponseEntity.internalServerError().body(
-                        List.of("Failed to add favorite"));
+                        List.of("Failed to add anime"));
             }
         } catch (DuplicateKeyException e) {
             return ResponseEntity.badRequest()
-                    .body(List.of("Character ID is a duplicate"));
+                    .body(List.of("Anime ID is a duplicate"));
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest()
                     .body(List.of("Username does not exist"));
         }
     }
 
-    @DeleteMapping("/{username}/{characterId}")
-    public ResponseEntity<?> deleteFavorite(@PathVariable String username,
-                                            @PathVariable int characterId) {
+    @DeleteMapping("/{username}/{animeId}")
+    public ResponseEntity<?> deleteWatchAnime(@PathVariable String username,
+                                         @PathVariable int animeId) {
         if (!usernameMatchesAuth(username)) {
             return ResponseEntity.status(403).build();
         }
-        if (favoritesJdbcRepository.deleteFavorite(username, characterId)) {
-            return ResponseEntity.noContent().build();
-        } else {
+        try {
+            if (watchListJdbcRepository.watchListDelete(username, animeId)) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.internalServerError().body(
+                        List.of("Failed to delete anime"));
+            }
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest()
-                    .body(List.of("Character ID not found as a favorite for "
-                            + username));
+                    .body(List.of("Username does not exist"));
         }
     }
 

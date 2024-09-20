@@ -28,7 +28,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests((authorizeRequests) ->
                 authorizeRequests
-                        .requestMatchers("/favorites/**").authenticated()
+                        .requestMatchers("/animeList/**").authenticated()
                         .anyRequest().permitAll());
         http.addFilter(jwtRequestFilter);
         http.sessionManagement((sessionManagement) ->
