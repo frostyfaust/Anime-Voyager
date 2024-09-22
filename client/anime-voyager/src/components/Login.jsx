@@ -4,6 +4,7 @@ import { requestLogin } from "../requests/LoginRequest"
 import { AuthContext } from "../App"
 
 export default function Login() {
+const userManager = useContext(AuthContext);
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState("")

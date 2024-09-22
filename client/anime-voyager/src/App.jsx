@@ -15,8 +15,25 @@ function App() {
   const [token, setToken] = useState(null);
   const [count, setCount] = useState(0);
 
+  const userManager = {
+    username: username,
+    token: token,
+    login(username, token) {
+      setUsername(username);
+      setToken(token);
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+    },
+    logout() {
+      setUsername(null);
+      setToken(null);
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+    }
+  }
+
   return (
-    <>
+    <AuthContext.Provider value={userManager}>
       <Router>
         <Nav />
         <Routes>
@@ -28,7 +45,7 @@ function App() {
           <Route path="/animeList" element={<AnimeList />} />
         </Routes>
       </Router>
-    </>
+      </AuthContext.Provider>
   );
 }
 

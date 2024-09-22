@@ -35,9 +35,11 @@ export default function Nav() {
             <li>
               <NavLink to="/search">Search</NavLink>
             </li>
-            <li>
-              <NavLink to="/animeList">Your Animes</NavLink>
-            </li>
+            {userManage.token && (
+              <li>
+                <NavLink to="/animeList">Anime List</NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -45,8 +47,28 @@ export default function Nav() {
         <a className="btn btn-ghost text-xl">Anime Voyager</a>
       </div>
       <div className="flex-none gap-2">
-        <div className="">
-          <NavLink className="btn btn-outline btn-info" to="/login">Login</NavLink>
+        <div className="flex">
+          {userManage.token ? (
+            <NavLink
+              onClick={userManage.logout}
+              to="/login"
+              className="btn btn-ghost text-xl"
+            >
+              Logout
+            </NavLink>
+          ) : (
+            <>
+              <NavLink className="btn btn-outline btn-info text-lg" to="/login">
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="btn btn-outline btn-info text-lg"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
         </div>
         <div className="dropdown dropdown-end">
           <div
