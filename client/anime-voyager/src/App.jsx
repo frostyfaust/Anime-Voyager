@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 import Search from "./components/Search";
 import AnimePage from "./components/AnimePage";
 import AnimeList from "./components/AnimeList";
+import Favorites from "./components/Favorites";
 
 export const AuthContext = createContext();
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/anime/:id" element={<AnimePage />} />
           <Route path="/animeList" element={<AnimeList />} />
+          <Route path="/animeList/favorites" element={<Favorites />} />
         </Routes>
       </Router>
       </AuthContext.Provider>

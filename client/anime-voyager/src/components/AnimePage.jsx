@@ -2,12 +2,17 @@ import ranking from "../assets/ranking.png";
 import calendar from "../assets/calendar.png";
 import time from "../assets/time.png";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getAnime } from "../requests/ApiRequests";
+import { AuthContext } from "../App";
+import { requestAddWatchedAnimeID } from "../requests/WatchedAnimeRequests";
+import { requestAddCurrentAnimeID } from "../requests/CurrentlyWatchingRequests";
+import { requestAddPlanToWatchAnimeID } from "../requests/PlanToWatchRequests";
 
 export default function AnimePage() {
   const { id } = useParams();
   const [anime, setAnime] = useState();
+  const userManager = useContext(AuthContext);
 
   useEffect(() => {
     getAnime(id)
@@ -24,6 +29,34 @@ export default function AnimePage() {
   if (!anime) {
     return <h1>Loading...</h1>;
   }
+
+  const handleWatched = async() => {
+    const response = await requestAddWatchedAnimeID(userManager.username, userManager.token, anime.mal_id);
+    if(response.success){
+      console.log("Successfully added anime to watched list");
+    } else {
+      console.error("Error adding anime to watched list", response.errors);
+    }
+  }
+
+  const handleCurrent = async() => {
+    const response = await requestAddCurrentAnimeID(userManager.username, userManager.token, anime.mal_id);
+    if(response.success){
+      console.log("Successfully added anime to Currently watching list");
+    } else {
+      console.error("Error adding anime to Currently watching list", response.errors);
+    }
+  }
+
+  const handlePlanToWatch = async() => {
+    const response = await requestAddPlanToWatchAnimeID(userManager.username, userManager.token, anime.mal_id);
+    if(response.success){
+      console.log("Successfully added anime to Plan to Watch list");
+    } else {
+      console.error("Error adding anime to Plan to Watch list", response.errors);
+    }
+  }
+    
 
   return (
     <div className="container flex flex-col gap-5 lg:gap-10">
@@ -59,9 +92,24 @@ export default function AnimePage() {
           </div>
         </div>
         <div className="flex flex-col m-auto">
-          <button className="btn btn-wide my-5">Already Watched</button>
-          <button className="btn btn-wide my-5">Currently Watching</button>
-          <button className="btn btn-wide my-5">Plan to Watch</button>
+          {userManager.username && (
+            <>
+              <button className="btn btn-wide my-5" onClick={(e)=>{
+                e.preventDefault();
+                handleWatched();
+              }}>Already Watched</button>
+
+              <button className="btn btn-wide my-5" onClick={(e)=>{
+                e.preventDefault();
+                handleCurrent();
+              }}>Currently Watching</button>
+
+              <button className="btn btn-wide my-5" onClick={(e)=>{
+                e.preventDefault();
+                handlePlanToWatch();
+              }}>Plan to Watch</button>
+            </>
+          )}
         </div>
       </div>
       <ul>

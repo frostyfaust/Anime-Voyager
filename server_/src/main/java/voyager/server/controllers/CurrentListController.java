@@ -10,7 +10,7 @@ import voyager.server.data.CurrentWatchListJdbcRepository;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/animeList/currentList")
 public class CurrentListController {
 

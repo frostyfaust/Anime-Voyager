@@ -2,8 +2,8 @@ const baseUrl = "http://localhost:8080";
 
 
 // returns { errors: [...] } or { favoriteIDs: [...] }
-export async function requestFavAnimeIDs(username, token) {
-    const response = await fetch(`${baseUrl}/animeList/favorites/${username}`, {
+export async function requestPlanToWatchAnimeIDs(username, token) {
+    const response = await fetch(`${baseUrl}/animeList/planToWatchList/${username}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,8 +19,8 @@ export async function requestFavAnimeIDs(username, token) {
   }
   
   // returns { success: true } or { errors: [...] }
-  export async function requestAddFavAnimeID(username, token, animeID) {
-    const response = await fetch(`${baseUrl}/animeList/favorites/${username}/${animeID}`, {
+  export async function requestAddPlanToWatchAnimeID(username, token, animeID) {
+    const response = await fetch(`${baseUrl}/animeList/planToWatchList/${username}/${animeID}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -38,8 +38,8 @@ export async function requestFavAnimeIDs(username, token) {
   }
   
   // returns { success: true } or { errors: [...] }
-  export async function requestRemoveFavAnimeID(username, token, animeID) {
-    const response = await fetch(`${baseUrl}/animeList/favorites/${username}/${animeID}`, {
+  export async function requestRemovePlanToWatchAnimeID(username, token, animeID) {
+    const response = await fetch(`${baseUrl}/animeList/planToWatchList/${username}/${animeID}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,4 +54,4 @@ export async function requestFavAnimeIDs(username, token) {
     } else {
       return { errors: ["An unknown error occurred. Please try again."] };
     }
-  }
+    }

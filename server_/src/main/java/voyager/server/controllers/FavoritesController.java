@@ -30,14 +30,14 @@ public class FavoritesController {
                 favoritesJdbcRepository.getFavorites(username));
     }
 
-    @PostMapping("/{username}/{characterId}")
+    @PostMapping("/{username}/{animeId}")
     public ResponseEntity<?> addFavorite(@PathVariable String username,
-                                         @PathVariable int characterId) {
+                                         @PathVariable int animeId) {
         if (!usernameMatchesAuth(username)) {
             return ResponseEntity.status(403).build();
         }
         try {
-            if (favoritesJdbcRepository.addFavorite(username, characterId)) {
+            if (favoritesJdbcRepository.addFavorite(username, animeId)) {
                 return ResponseEntity.noContent().build();
             } else {
                 return ResponseEntity.internalServerError().body(
@@ -45,24 +45,24 @@ public class FavoritesController {
             }
         } catch (DuplicateKeyException e) {
             return ResponseEntity.badRequest()
-                    .body(List.of("Character ID is a duplicate"));
+                    .body(List.of("Anime ID is a duplicate"));
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest()
                     .body(List.of("Username does not exist"));
         }
     }
 
-    @DeleteMapping("/{username}/{characterId}")
+    @DeleteMapping("/{username}/{animeId}")
     public ResponseEntity<?> deleteFavorite(@PathVariable String username,
-                                            @PathVariable int characterId) {
+                                            @PathVariable int animeId) {
         if (!usernameMatchesAuth(username)) {
             return ResponseEntity.status(403).build();
         }
-        if (favoritesJdbcRepository.deleteFavorite(username, characterId)) {
+        if (favoritesJdbcRepository.deleteFavorite(username, animeId)) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.badRequest()
-                    .body(List.of("Character ID not found as a favorite for "
+                    .body(List.of("Anime ID not found as a favorite for "
                             + username));
         }
     }

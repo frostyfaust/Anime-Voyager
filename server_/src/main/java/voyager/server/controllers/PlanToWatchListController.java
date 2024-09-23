@@ -10,7 +10,7 @@ import voyager.server.data.PlanToWatchJdbcRepository;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/animeList/planToWatchList")
 public class PlanToWatchListController {
 
