@@ -10,7 +10,7 @@ export async function requestPlanToWatchAnimeIDs(username, token) {
       },
     });
     if (response.ok) {
-      return { favoriteIDs: await response.json() };
+      return { planToWatchIDs: await response.json() };
     } else if (response.status === 403) {
       return { errors: ["Unauthorized"] };
     } else {

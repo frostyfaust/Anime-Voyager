@@ -6,8 +6,10 @@ import Register from "./components/Register";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
 import AnimePage from "./components/AnimePage";
-import AnimeList from "./components/AnimeList";
 import Favorites from "./components/Favorites";
+import Watched from "./components/Watched";
+import CurrentlyWatching from "./components/CurrentlyWatching";
+import PlanToWatch from "./components/PlanToWatch";
 
 export const AuthContext = createContext();
 
@@ -43,8 +45,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/search" element={<Search />} />
           <Route path="/anime/:id" element={<AnimePage />} />
-          <Route path="/animeList" element={<AnimeList />} />
-          <Route path="/animeList/favorites" element={<Favorites />} />
+          <Route path="/watched" element={<Watched />} />
+          <Route path="/current" element={<CurrentlyWatching />} />
+          <Route path="/plan" element={<PlanToWatch />} />
+          <Route path="/favorites" element={<Favorites />} />
+          
         </Routes>
       </Router>
       </AuthContext.Provider>

@@ -10,7 +10,7 @@ export async function requestCurrentAnimeIDs(username, token) {
       },
     });
     if (response.ok) {
-      return { favoriteIDs: await response.json() };
+      return { currentIDs: await response.json() };
     } else if (response.status === 403) {
       return { errors: ["Unauthorized"] };
     } else {

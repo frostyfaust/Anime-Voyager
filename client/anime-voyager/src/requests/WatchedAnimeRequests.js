@@ -10,7 +10,7 @@ export async function requestWatchedAnimeIDs(username, token) {
       },
     });
     if (response.ok) {
-      return { favoriteIDs: await response.json() };
+      return { watchedIDs: await response.json() };
     } else if (response.status === 403) {
       return { errors: ["Unauthorized"] };
     } else {
