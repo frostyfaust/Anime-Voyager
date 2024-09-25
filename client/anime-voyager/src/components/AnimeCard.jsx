@@ -4,8 +4,6 @@ import { useNavigate} from "react-router-dom";
 export default function AnimeCard({ anime }) {
   const navigate = useNavigate();
 
-  console.log(anime);
-
   const handleClick = () => {
     navigate(`/anime/${anime.mal_id}`);
   };

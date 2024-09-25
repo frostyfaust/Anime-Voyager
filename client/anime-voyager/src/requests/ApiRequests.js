@@ -1,7 +1,7 @@
-export async function getAnimes(search) {
+export async function getAnimes(search, page) {
   try {
     const res = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${search}&sfw=true`
+      `https://api.jikan.moe/v4/anime?q=${search}&sfw=true&page=${page}&limit=10`
     );
     const data = await res.json();
     return data;
