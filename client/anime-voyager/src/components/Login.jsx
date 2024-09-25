@@ -23,6 +23,7 @@ const userManager = useContext(AuthContext);
 }
 
   return (
+    <div className="bg flex flex-col items-center">
     <div className="flex flex-1 flex-col items-center justify-center">
             <h1 className="text-6xl font-bold text-yellow-400 mb-12">
                 Login
@@ -63,5 +64,6 @@ const userManager = useContext(AuthContext);
                 Don't have an account? Register here.
             </Link>
         </div>
+    </div>
   )
 }

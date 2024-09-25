@@ -6,6 +6,7 @@ export default function Nav() {
   const userManage = useContext(AuthContext);
 
   return (
+    <div className="top">
     <div className="navbar bg-neutral text-white">
       <div className="navbar-start">
       <div className="flex flex-1 justify-start px-2">
@@ -56,6 +57,7 @@ export default function Nav() {
           </>
         )}
       </div>
+    </div>
     </div>
   );
 }

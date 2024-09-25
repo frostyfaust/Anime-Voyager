@@ -25,9 +25,9 @@ export default function Search() {
     }
   }
   return (
-    <div>
-      <h1 className="text-center">Lets go on a voyage to find your anime!</h1>
-      <form onSubmit={handleSubmit} className="flex justify-center mb-8">
+    <div className="bg flex flex-col items-center pt-20">
+      <h1 className="text-center text-black bg-slate-400 bg-opacity-40 p-2 rounded-md">Lets go on a voyage to find your anime!</h1>
+      <form onSubmit={handleSubmit} className="flex justify-center my-8 w-3/5">
         <input
           type="text"
           className="py-2 px-4 text-lg rounded-l-lg border-2 border-gray-300 focus:outline-none focus:border-purple-500 w-2/3"

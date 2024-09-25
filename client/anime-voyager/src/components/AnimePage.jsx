@@ -59,7 +59,7 @@ export default function AnimePage() {
     
 
   return (
-    <div className="container flex flex-col gap-5 lg:gap-10">
+    <div className="container flex flex-col gap-5 lg:gap-10 m-auto mt-20">
       <div className="flex flex-col gap-5 border-b-2 border-black-1 pb-5 sm:flex-row lg:gap-10 lg:pb-10 dark:border-white-2">
         <img
           src={anime.images.jpg.large_image_url}
@@ -112,7 +112,7 @@ export default function AnimePage() {
           )}
         </div>
       </div>
-      <ul>
+      <ul className="text-center">
         {anime.genres.map((genre, index) => (
           <li
             key={index}
@@ -124,9 +124,9 @@ export default function AnimePage() {
       </ul>
       <h2>Synopsis</h2>
       <p className="text-justify">{anime.synopsis}</p>
-      <div>
+      {/* <div>
         <iframe src={anime.trailer.embed_url} frameborder="0"></iframe>
-      </div>
+      </div> */}
       {anime.background ? (
         <div className="p">
           <h2>Background</h2>

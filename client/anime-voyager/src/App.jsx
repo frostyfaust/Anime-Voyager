@@ -49,7 +49,6 @@ function App() {
           <Route path="/current" element={<CurrentlyWatching />} />
           <Route path="/plan" element={<PlanToWatch />} />
           <Route path="/favorites" element={<Favorites />} />
-          
         </Routes>
       </Router>
       </AuthContext.Provider>

@@ -33,7 +33,7 @@ export default function CurrentlyWatching() {
     );
 
     return (
-        <div className="relative z-10 text-center flex-col items-center mt-10">
+        <div className="bg flex flex-col items-center pt-20">
       <h1 className="text-4xl font-bold text-yellow-400 mb-12">
         {userManager.username}'s currently Watching 
       </h1>
