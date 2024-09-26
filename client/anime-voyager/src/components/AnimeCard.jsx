@@ -1,11 +1,30 @@
+import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-
-export default function AnimeCard({ anime }) {
+export default function AnimeCard({ anime, watched, current, planToWatch }) {
   const navigate = useNavigate();
+  const [hasWatched, setWatched] = useState(false);
+  const [hasCurrent, setCurrent] = useState(false);
+  const [hasPlanToWatch, setPlanToWatch] = useState(false);
+
+  useEffect(() => {
+    if (watched !== undefined) {
+      setWatched(watched);
+    }
+    if (current !== undefined) {
+      setCurrent(current);
+    }
+    if (planToWatch !== undefined) {
+      setPlanToWatch(planToWatch);
+    }
+  }, [watched, current, planToWatch]);
+
+
 
   const handleClick = () => {
-    navigate(`/anime/${anime.mal_id}`);
+    navigate(`/anime/${anime.mal_id}`, {state: {isWatched: hasWatched, isCurrent: hasCurrent, isPlanToWatch: hasPlanToWatch}});
+
   };
 
   return (

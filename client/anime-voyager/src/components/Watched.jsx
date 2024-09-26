@@ -11,6 +11,8 @@ export default function Watched() {
     const [error, setError] = useState([null]);
     const navigate = useNavigate();
 
+    const isWatched = true;
+
     useEffect(() => {
         if(!userManager.username){
             navigate("/login");
@@ -47,7 +49,7 @@ export default function Watched() {
             </div>
             :
             <div>
-              <AnimeCards animes={watched} />
+              <AnimeCards animes={watched} watched={isWatched}/>
             </div>
       }
     </div >

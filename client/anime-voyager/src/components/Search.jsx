@@ -6,9 +6,9 @@ export default function Search() {
   const [pageNum, setPageNum] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
   const [search, setSearch] = useState("");
+  // const [searched, setSearched] = useState(false);
   const [animes, setAnimes] = useState([]);
-  const [preLoadAnime, setPreLoadAnime] = useState([]);
-  let searched = false;
+  // const [preLoadAnime, setPreLoadAnime] = useState([]);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -18,13 +18,18 @@ export default function Search() {
     e.preventDefault();
     if (search.length > 0) {
       setPageNum(1);
-      const data = await getAnimes(search, pageNum);
+      fetchAnime(1);
+    }
+  };
+
+  async function fetchAnime(pn) {
+    const data = await getAnimes(search, pn);
       console.log(data);
       setMaxPage(data.pagination.last_visible_page);
       console.log(maxPage);
       setAnimes(data.data);
-    }
-  };
+  }
+
 
   function handleKeyPress(e) {
     if (e.key === "Enter") {
@@ -34,31 +39,30 @@ export default function Search() {
 
   useEffect(() => {
     const preloadAnime = async () => {
-      if (!searched) {
         const data = await getAnimes("Naruto", pageNum);
         console.log(data.pagination.last_visible_page);
         setMaxPage(data.pagination.last_visible_page);
-        console.log('here')
+        console.log("here");
         console.log(maxPage);
         console.log(data);
-        setPreLoadAnime(data.data);
-        searched = true;
-      }
+        setAnimes(data.data);
     };
     preloadAnime();
-  }, [searched, pageNum]);
+  }, []);
 
   const prevPage = () => {
     if (pageNum > 1) {
       setPageNum(pageNum - 1);
+      fetchAnime(pageNum -1);
     }
-  }
+  };
 
   const nextPage = () => {
-    if (pageNum < maxPage){
-    setPageNum(pageNum + 1);
-  }
-  }
+    if (pageNum < maxPage) {
+      setPageNum(pageNum + 1);
+      fetchAnime(pageNum + 1);
+    }
+  };
 
   return (
     <div className="bg flex flex-col items-center pt-20">
@@ -82,20 +86,17 @@ export default function Search() {
         </button>
       </form>
       <div className="join">
-        <button className="join-item btn" onClick={prevPage} >«</button>
+        <button className="join-item btn" onClick={prevPage}>
+          «
+        </button>
         <button className="join-item btn">{pageNum}</button>
-        <button className="join-item btn" onClick={nextPage}>»</button>
+        <button className="join-item btn" onClick={nextPage}>
+          »
+        </button>
       </div>
       <div className="text-center">
-        {searched ? (
           <AnimeCards animes={animes} />
-        ) : (
-          <AnimeCards animes={preLoadAnime} />
-        )
-        }
-        
       </div>
-      
     </div>
   );
 }

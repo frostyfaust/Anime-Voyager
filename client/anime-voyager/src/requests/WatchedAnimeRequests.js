@@ -16,7 +16,7 @@ export async function requestWatchedAnimeIDs(username, token) {
     } else {
       return { errors: ["An unknown error occurred. Please try again."] };
     }
-  }
+  } 
   
   // returns { success: true } or { errors: [...] }
   export async function requestAddWatchedAnimeID(username, token, animeID) {
@@ -39,7 +39,7 @@ export async function requestWatchedAnimeIDs(username, token) {
   
   // returns { success: true } or { errors: [...] }
   export async function requestRemoveWatchedAnimeID(username, token, animeID) {
-    const response = await fetch(`${baseUrl}/animeList/WatchList/${username}/${animeID}`, {
+    const response = await fetch(`${baseUrl}/animeList/watchList/${username}/${animeID}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

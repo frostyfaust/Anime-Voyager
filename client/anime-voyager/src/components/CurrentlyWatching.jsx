@@ -10,6 +10,7 @@ export default function CurrentlyWatching() {
     const [current, setCurrent] = useState([]);
     const [error, setError] = useState([null]);
     const navigate = useNavigate();
+    let isCurrent = true;
 
     useEffect(() => {
         if(!userManager.username){
@@ -47,7 +48,7 @@ export default function CurrentlyWatching() {
             </div>
             :
             <div>
-              <AnimeCards animes={current} />
+              <AnimeCards animes={current} current={isCurrent}/>
             </div>
       }
     </div >

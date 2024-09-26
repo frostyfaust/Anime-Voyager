@@ -29,7 +29,7 @@ export default function Nav() {
   </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <a className="btn btn-ghost text-xl text-white">daisyUI</a>
+        <a className="btn btn-ghost text-xl text-white">Anime Voyage</a>
       </div>
       <div className="navbar-end">
         {userManage.token ? (

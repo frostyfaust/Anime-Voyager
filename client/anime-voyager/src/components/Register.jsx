@@ -20,8 +20,10 @@ export default function Register() {
   }
 
   return (
+    <div className="bg flex flex-col items-center">
     <div className="flex flex-col items-center justify-center flex-1">
-      <h1 className="text-6xl font-bold text-yellow-400 mb-10">Register</h1>
+      <div className="bg-white flex flex-col p-4 text-center rounded-lg bg-opacity-50">
+      <h1 className="text-6xl font-bold text-indigo-400 mb-10">Register</h1>
       {errors.length > 0 && (
         <div className="bg-red-500 text-white mb-2 p-2 rounded">
           {errors.map((error, index) => (
@@ -46,11 +48,13 @@ export default function Register() {
         />
         <button
           type="submit"
-          className="p-2 bg-yellow-400 text-black text-xl rounded"
+          className="p-2 bg-indigo-400 text-black text-xl rounded"
         >
           Register
         </button>
       </form>
+      </div>
+    </div>
     </div>
   );
 }

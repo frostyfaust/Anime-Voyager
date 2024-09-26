@@ -10,6 +10,7 @@ export default function PlanToWatch() {
     const [planToWatch, setPlanToWatch] = useState([]);
     const [error, setError] = useState([null]);
     const navigate = useNavigate();
+    let isPlanToWatch = true;
 
     useEffect(() => {
         if(!userManager.username){
@@ -47,7 +48,7 @@ export default function PlanToWatch() {
             </div>
             :
             <div>
-              <AnimeCards animes={planToWatch} />
+              <AnimeCards animes={planToWatch} planToWatch={isPlanToWatch} />
             </div>
       }
     </div >
