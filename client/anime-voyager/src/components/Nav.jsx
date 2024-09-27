@@ -17,7 +17,6 @@ export default function Nav() {
         <ul
           tabIndex={0}
           className="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-28 p-2 shadow">
-          <li><NavLink to="/favorites">Favorites</NavLink></li>
           <li><NavLink to="/watched">Finished Animes</NavLink></li>
           <li><NavLink to="/current">Currently Watching</NavLink></li>
           <li><NavLink to="/plan">Plan to Watch</NavLink></li>
@@ -29,7 +28,7 @@ export default function Nav() {
   </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <a className="btn btn-ghost text-xl text-white">Anime Voyage</a>
+        <a className=" text-xl text-white">Anime Voyager</a>
       </div>
       <div className="navbar-end">
         {userManage.token ? (

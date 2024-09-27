@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -9,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #FFE5CF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,7 +29,7 @@ a:hover {
 
 body {
   margin: 0;
-
+  background-color: #FFE5CF;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -69,7 +70,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
   }
   a:hover {
     color: #747bff;
@@ -99,4 +100,8 @@ button:focus-visible {
   left: 0;
   width: 100%;
   z-index: 10;
+}
+
+.cream {
+  background-color: #FFE5CF;
 }

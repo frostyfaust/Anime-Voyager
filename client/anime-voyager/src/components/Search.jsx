@@ -65,9 +65,9 @@ export default function Search() {
   };
 
   return (
-    <div className="bg flex flex-col items-center pt-20">
-      <h1 className="text-center text-black bg-slate-400 bg-opacity-40 p-2 rounded-md">
-        Embark on your Anime Voyage!
+    <div className="cream flex flex-col items-center pt-20">
+      <h1 className="text-center text-black bg-indigo-400 bg-opacity-40 p-2 rounded-md">
+        Find your Anime !
       </h1>
       <form onSubmit={handleSubmit} className="flex justify-center my-8 w-3/5">
         <input

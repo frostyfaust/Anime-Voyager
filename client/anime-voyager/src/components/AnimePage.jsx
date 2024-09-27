@@ -203,8 +203,8 @@ export default function AnimePage() {
   };
 
   return (
-    <div className="container flex flex-col gap-5 lg:gap-10 m-auto mt-20">
-      <div className="flex flex-col gap-5 border-b-2 border-black-1 pb-5 sm:flex-row lg:gap-10 lg:pb-10 dark:border-white-2">
+    <div className="cream container flex flex-col gap-5 lg:gap-10 m-auto mt-20">
+      <div className="flex flex-col gap-5 border-b-2 border-gray-600 pb-5 sm:flex-row lg:gap-10 lg:pb-10 dark:border-white-2">
         <img
           src={anime.images.jpg.large_image_url}
           alt={anime.title}
@@ -298,7 +298,7 @@ export default function AnimePage() {
           <p>{anime.background}</p>
         </div>
       ) : null}
-      <footer className="footer footer-center bg-base-300 text-base-content p-4">
+      <footer className="footer footer-center bg-indigo-400 text-base-content p-4">
         <aside>
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by ACME

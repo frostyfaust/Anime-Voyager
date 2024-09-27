@@ -34,8 +34,9 @@ export default function CurrentlyWatching() {
     );
 
     return (
-        <div className="bg flex flex-col items-center pt-20">
-      <h1 className="text-4xl font-bold text-yellow-400 mb-12">
+      <div className="cream flex flex-col items-center pt-20">
+        <div className="cream flex flex-col items-center pt-20">
+      <h1 className="text-4xl font-bold text-indigo-400 mb-12">
         {userManager.username}'s currently Watching 
       </h1>
       {/* <button className="p-2 bg-yellow-400 text-black rounded" onClick={() => setLoading(true)}>refresh</button> */}
@@ -52,5 +53,6 @@ export default function CurrentlyWatching() {
             </div>
       }
     </div >
+    </div>
     )
 }

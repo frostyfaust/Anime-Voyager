@@ -6,7 +6,6 @@ import Register from "./components/Register";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
 import AnimePage from "./components/AnimePage";
-import Favorites from "./components/Favorites";
 import Watched from "./components/Watched";
 import CurrentlyWatching from "./components/CurrentlyWatching";
 import PlanToWatch from "./components/PlanToWatch";
@@ -48,7 +47,6 @@ function App() {
           <Route path="/watched" element={<Watched />} />
           <Route path="/current" element={<CurrentlyWatching />} />
           <Route path="/plan" element={<PlanToWatch />} />
-          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>
       </AuthContext.Provider>
